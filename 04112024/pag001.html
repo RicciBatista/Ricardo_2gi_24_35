@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Métodos do Objeto Window</h2>
+    <input type="button" value="Confirmar o nome" onclick="check()">
+    <input type="button" value="Fechar a janela" onclick="fechr()">
+    <script>
+        var name = window.prompt("Digite o seu nome");
+        var name = name.toUpperCase();
+
+        function check(){
+            if(window.confirm("o seu nome é mesmo " + nome + "?")){
+            window.alert("Você confirmou que o seu nome é" + nome);
+        }
+        else{
+            window.alert("Ok, o seu nome não é" + nome);
+        }
+    }
+    function fechar(){
+        if(window.confirm("Deseja mesmo fechar a janela?")){
+            window.close();
+        }
+    }
+    </script>
+</body>
+</html>
