@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contato</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            margin-top: 30px;
+            text-align: center;
+            color: #3498db;
+            background-color: #0f4616;
+        }
+
+        form {
+            max-width: 400px;
+            margin-right: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        input, textarea, select {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        input:invalid, textarea:invalid {
+            border-color: #e74c3c;
+        }
+
+        .error-message {
+            color: #e74c3c;
+            font-size: 0.9em;
+            display: none;
+        }
+
+        .submit-button {
+            background-color: #3498db;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        .submit-button:hover {
+            background-color: #2980b9;
+        }
+        nav {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            padding: 10px 20px;
+            background-color: #444;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="sobrenos.html">Sobre Nós</a>
+            <a href="servicos.html">Serviços</a>
+            <a href="contacto.html">Contacto</a>
+            <a href="historiaf1.html">História da F1</a>
+            <a href="euf1.html">Porque vejo F1</a>
+            <a href="campeoesf1.html">Campeões de F1</a>
+        </nav>
+    </header>
+    <form id="contactForm">
+        <h2>Contato</h2>
+
+        <label for="name">Nome</label>
+        <input type="text" id="name" name="name" required>
+        <span class="error-message" id="nameError">Por favor, insira seu nome.</span>
+
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" required>
+        <span class="error-message" id="emailError">Por favor, insira um email válido.</span>
+
+        <label for="phone">Telefone</label>
+        <input type="tel" id="phone" name="phone" pattern="[0-9]{2}-[0-9]{5}-[0-9]{4}" placeholder="XX-XXXXX-XXXX" required>
+        <span class="error-message" id="phoneError">Por favor, insira um telefone no formato XX-XXXXX-XXXX.</span>
+
+        <label for="message">Mensagem</label>
+        <textarea id="message" name="message" rows="4" required></textarea>
+        <span class="error-message" id="messageError">Por favor, insira uma mensagem.</span>
+
+        <button type="submit" class="submit-button">Enviar</button>
+    </form>
+
+    <script>
+        document.getElementById("contactForm").addEventListener("submit", function(event) {
+            let isValid = true;
+            const nameField = document.getElementById("name");
+            const nameError = document.getElementById("nameError");
+            if (nameField.value.trim() === "") {
+                nameError.style.display = "block";
+                isValid = false;
+            } else {
+                nameError.style.display = "none";
+            }
+            const emailField = document.getElementById("email");
+            const emailError = document.getElementById("emailError");
+            if (!emailField.validity.valid) {
+                emailError.style.display = "block";
+                isValid = false;
+            } else {
+                emailError.style.display = "none";
+            }
+            const phoneField = document.getElementById("phone");
+            const phoneError = document.getElementById("phoneError");
+            if (!phoneField.validity.valid) {
+                phoneError.style.display = "block";
+                isValid = false;
+            } else {
+                phoneError.style.display = "none";
+            }
+            const messageField = document.getElementById("message");
+            const messageError = document.getElementById("messageError");
+            if (messageField.value.trim() === "") {
+                messageError.style.display = "block";
+                isValid = false;
+            } else {
+                messageError.style.display = "none";
+            }
+
+            if (!isValid) {
+                event.preventDefault();
+            }
+        });
+    </script>
+</body>
+</html>
